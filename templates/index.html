@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} <title>Dream Lands</title> {% endblock %}
+
+{% block header %}
+		{% set is_authenticated=is_authenticated %}
+		{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">{{ first_post.create_date }}</span>
+									<h2><a href="#">{{ first_post.location_name }}<br />
+									{{ first_post.country }}</a></h2>
+									{{ first_post.description|safe|truncate(117) }}
+								</header>
+								<a href="{{ first_post.img_url }}" class="image main" target="_blank"><img src="{{ first_post.img_url }}" alt="" /></a>
+<!--								<a href="" class="image main"><img src="{{ url_for('static', filename='images/edit-bg.png') }}" alt="" /></a>-->
+								<ul class="actions special">
+									<li><a href="{{ url_for('post', post_id=first_post.id) }}" class="button large">Full Story</a></li>
+								</ul>
+							</article>
+
+						<!-- Posts -->
+							<section class="posts">
+								{% for post in posts %}
+								<article>
+									<header>
+										<span class="date">{{ post.create_date }}</span>
+										<h2><a href="#">{{ post.location_name }}<br />
+											{{ post.country }}</a></h2>
+									</header>
+									<a href="{{ post.img_url }}" class="image fit" target="_blank"><img src="{{ post.img_url }}" alt="" /></a>
+									 {{ post.description|safe|truncate(117) }}
+									<ul class="actions special">
+										<li><a href="{{ url_for('post', post_id=post.id) }}" class="button">Full Story</a></li>
+									</ul>
+								</article>
+								{% endfor %}
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a href="#" class="page active">1</a>
+									<a href="#" class="page">2</a>
+									<a href="#" class="page">3</a>
+									<span class="extra">&hellip;</span>
+									<a href="#" class="page">8</a>
+									<a href="#" class="page">9</a>
+									<a href="#" class="page">10</a>
+									<a href="#" class="next">Next</a>
+								</div>
+							</footer>
+
+					</div>
+
+{% endblock %}
+
+
+{% block footer %}
+	{% set form=form %}
+	{% include "footer.html" %}
+{% endblock %}

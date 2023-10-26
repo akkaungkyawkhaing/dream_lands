@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} <title>Login</title> {% endblock %}
+
+{% block header %}
+		{% set is_authenticated=is_authenticated %}
+		{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div id="main">
+
+        <!-- Post -->
+            <section class="post">
+
+                <header class="major">
+                    <h2>Login an <br>account</h2>
+                </header>
+
+                <!-- Form -->
+				<form method="POST" action="{{ url_for('login') }}" enctype="multipart/form-data">
+						{{ form.csrf_token }}
+					<div class="col-12">
+<!--						{{ wtf.quick_form(form, button_map={"submit": "primary"}) }}-->
+						{{ form.email(placeholder="Email") }}
+					</div><br>
+					<div class="col-12">
+						{{ form.password(placeholder="Password") }}
+					</div><br>
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<strong style="color: red">Error: {{ message }}</strong>
+						{% endfor %}
+					{% endif %}
+					{% endwith %}
+					<div class="col-12">
+						{{ form.submit(class="primary") }}
+					</div>
+				</form>
+
+			</section>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+		<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+{% endblock %}

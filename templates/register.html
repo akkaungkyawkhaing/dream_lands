@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} <title>Register</title> {% endblock %}
+
+{% block header %}
+		{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div id="main">
+
+        <!-- Post -->
+            <section class="post">
+
+                <header class="major">
+                    <h2>Create an <br>account</h2>
+                </header>
+
+                <!-- Form -->
+				<form method="POST" action="{{ url_for('register') }}">
+					<div class="col-12">
+						{{ wtf.quick_form(form, button_map={"submit": "primary"}) }}
+					</div>
+				</form>
+
+<!--						<form method="POST" action="{{ url_for('register') }}">-->
+<!--							<input type="hidden" name="csrf_token" value="{{ csrf_token }}">-->
+<!--							<div class="row gtr-uniform">-->
+<!--								<div class="col-6 col-12-xsmall">-->
+<!--									<input type="text" name="demo-fname" id="demo-fname" value="" placeholder="First Name" />-->
+<!--								</div>-->
+<!--								<div class="col-6 col-12-xsmall">-->
+<!--									<input type="text" name="demo-lname" id="demo-lname" value="" placeholder="Last Name" />-->
+<!--								</div>-->
+<!--								<div class="col-6 col-12-xsmall">-->
+<!--									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />-->
+<!--								</div>-->
+<!--								<div class="col-6 col-12-xsmall">-->
+<!--									<input type="password" name="demo-password" id="demo-password" value="" placeholder="Password" />-->
+<!--								</div>-->
+<!--								&lt;!&ndash; Break &ndash;&gt;-->
+<!--								<div class="col-12">-->
+<!--									<ul class="actions">-->
+<!--										<li><input type="submit" value="Create account" class="primary" /></li>-->
+<!--										<li><input type="reset" value="Reset" /></li>-->
+<!--									</ul>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</form>-->
+
+			</section>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+		<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+{% endblock %}
