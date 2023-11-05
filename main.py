@@ -81,14 +81,12 @@ def load_user(user_id):
 @app.route('/')
 def home():
     get_all_posts = Post.query.all()
-    print(get_all_posts[0])
     return render_template('index.html', posts=get_all_posts, first_post=get_all_posts[0], is_authenticated=current_user.is_authenticated)
 
 
 @app.route('/post/<int:post_id>', methods=["GET", "POST"])
 def post(post_id):
     get_post = Post.query.filter_by(id=post_id).first()
-    print(get_post)
     return render_template('post.html', post=get_post, is_authenticated=current_user.is_authenticated)
 
 

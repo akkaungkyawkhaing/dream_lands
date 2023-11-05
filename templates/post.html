@@ -56,16 +56,19 @@
 
 			<header class="major">
 				<span class="date">{{ post.create_date }}</span>
-				<h2><a href="#">{{ post.location_name }}<br />
-				{{ post.country }}</a></h2>
-										{{ post.description|safe }}
+				<h2>{{ post.location_name }}<br />
+				{{ post.country }}
+				</h2>
 			</header>
 
 			<a href="{{ post.img_url }}" class="image main" target="_blank"><img src="{{ post.img_url }}" alt="" /></a>
 	<!--			<a href="#" class="image main"><img src="{{ url_for('static', filename='images/edit-bg.png') }}" alt="" /></a>-->
+			{{ post.description|safe }}
 
 			<ul class="actions special">
+				{% if is_authenticated %}
 				<li><a href="{{ url_for('edit_post', post_id=post.id) }}" class="button large">Edit Story</a></li>
+				{% endif %}
 			</ul>
 
 	</article>

@@ -16,7 +16,7 @@
 							<article class="post featured">
 								<header class="major">
 									<span class="date">{{ first_post.create_date }}</span>
-									<h2><a href="#">{{ first_post.location_name }}<br />
+									<h2><a href="{{ url_for('post', post_id=first_post.id) }}">{{ first_post.location_name }}<br />
 									{{ first_post.country }}</a></h2>
 									{{ first_post.description|safe|truncate(117) }}
 								</header>
@@ -33,7 +33,7 @@
 								<article>
 									<header>
 										<span class="date">{{ post.create_date }}</span>
-										<h2><a href="#">{{ post.location_name }}<br />
+										<h2><a href="{{ url_for('post', post_id=post.id) }}">{{ post.location_name }}<br />
 											{{ post.country }}</a></h2>
 									</header>
 									<a href="{{ post.img_url }}" class="image fit" target="_blank"><img src="{{ post.img_url }}" alt="" /></a>
